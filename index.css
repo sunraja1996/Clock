@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   height: 100%;
 }
@@ -323,6 +323,100 @@ section:nth-of-type(60) {
   }
 }
 
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
+  }
+} */
+
+/* CSS Style 1 */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #a8dadc; /* Soft aqua blue */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #457b9d; /* Blue-gray */
+}
+
+p {
+  color: #6a737d; /* Light gray */
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+.clock {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.clock__second,
+.clock__minute,
+.clock__hour,
+.clock__indicator {
+  position: absolute;
+  left: calc(50% - 1px);
+  width: 2px;
+  background: #6a737d; /* Light gray */
+  transform-origin: bottom center;
+  z-index: 2;
+  border-radius: 1px;
+}
+.clock__second {
+  height: 90px;
+  margin-top: 10px;
+  background: #457b9d; /* Blue-gray */
+  animation: time 60s infinite steps(60);
+  z-index: 3;
+}
+.clock__minute {
+  height: 80px;
+  margin-top: 20px;
+  opacity: 0.75;
+  animation: time 3600s linear infinite;
+}
+.clock__hour {
+  height: 60px;
+  margin-top: 40px;
+  animation: time 43200s linear infinite;
+}
+.clock__indicator {
+  height: 98px;
+  border-top: 2px solid #457b9d; /* Blue-gray */
+  background: none;
+}
+.clock__indicator:nth-of-type(5n) {
+  opacity: 1;
+  height: 93px;
+  border-top: 7px solid #6a737d; /* Light gray */
+}
+.clock__axis {
+  background: #457b9d; /* Blue-gray */
+  width: 5px;
+  height: 5px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 4;
+  top: 97px;
+}
+
+/* Section rotation styles */
+section {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Keyframes and animations */
 @keyframes time {
   to {
     transform: rotateZ(360deg);
