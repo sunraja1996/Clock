@@ -1,33 +1,31 @@
-var now = new Date();
-var currentSec = now.getSeconds() + now.getMinutes() * 60 + now.getHours() * 3600;
+// script.js
 
-var seconds = (currentSec / 60) % 1;
-var minutes = (currentSec / 3600) % 1;
-var hours = (currentSec / 43200) % 1;
+document.addEventListener("DOMContentLoaded", function () {
+  const currentSec = getSecondsToday();
 
-setTime(60 * seconds, "second");
-setTime(3600 * minutes, "minute");
-setTime(43200 * hours, "hour");
-
-function setTime(left, hand) {
-  $(".clock__" + hand).css("animation-delay", "" + left * -1 + "s");
-}
-
-
-function updateClock() {
-  var now = new Date();
-  var currentSec = now.getSeconds() + now.getMinutes() * 60 + now.getHours() * 3600;
-
-  var seconds = (currentSec / 60) % 1;
-  var minutes = (currentSec / 3600) % 1;
-  var hours = (currentSec / 43200) % 1;
+  const seconds = (currentSec / 60) % 1;
+  const minutes = (currentSec / 3600) % 1;
+  const hours = (currentSec / 43200) % 1;
 
   setTime(60 * seconds, "second");
   setTime(3600 * minutes, "minute");
   setTime(43200 * hours, "hour");
+});
+
+function setTime(left, hand) {
+  const clockHand = document.querySelector(".clock__" + hand);
+  clockHand.style.animationDelay = left * -1 + "s";
 }
 
-setInterval(updateClock, 1000);
+function getSecondsToday() {
+  const now = new Date();
+
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const diff = now - today;
+  return Math.round(diff / 1000);
+}
+
 
 
 // _______________________
